@@ -1,0 +1,18 @@
+package modele;
+
+import com.modeliosoft.modelio.javadesigner.annotations.objid;
+import controle.Controleur;
+import controle.Direction;
+
+@objid ("e4a4bca7-c6da-482f-b386-834880b5d059")
+public class Personnage extends Mobile {
+    @objid ("510885e3-6471-4688-b5a3-df3bbbcbcf93")
+    private Controleur controleur;
+
+    @objid ("eafcb64f-3257-4ce0-83f0-d9d744db45b3")
+    public boolean deplacement(Direction direction) {
+    	Tuille tuille_voisine = super.getTuille().tuilleVoisine(direction);
+    	return tuille_voisine.demandeDeplacement();
+    }
+
+}
