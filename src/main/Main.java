@@ -3,10 +3,13 @@ package main;
 import javax.swing.SwingUtilities;
 
 import controle.Controleur;
-import controle.ControleurBouchon;
 import ihm.FenetreSokoban;
+import modele.Caisse;
+import modele.Destination;
 import modele.Entrepot;
+import modele.Mur;
 import modele.Personnage;
+import modele.Position;
 
 public class Main implements Runnable{
 
@@ -16,8 +19,7 @@ public class Main implements Runnable{
 
 	public void run() {
 		Entrepot entrepot = new Entrepot(5, 6);
-		Personnage personnage = new Personnage()
-		Controleur controleur = new Controleur(personnage, entrepot);
+		Controleur controleur = new Controleur(entrepot);
 		new FenetreSokoban(controleur);
 	}
 }
