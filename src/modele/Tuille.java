@@ -24,10 +24,35 @@ public class Tuille {
     }
 
     @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")
-    public boolean demandeDeplacement() {
-    	if (fixe != null) {
-    		
+    public boolean demandeDeplacement(Direction direction, Personnage personnage) {
+    	if (!(mobile instanceof Caisse) && !(fixe instanceof Mur)) {
+    		mobile = personnage;
+    		return true;
     	}
+    	else if (mobile instanceof Caisse) {
+    		if (mobile.deplacement(direction)) {
+    			mobile = personnage;
+    			return true;
+    		}
+    		else {
+    			return false;
+    		}
+    	}
+    	else {
+    		return false;
+    	}
+    	
+    }
+    
+    public boolean demandeDeplacement(Caisse caisse) {
+    	if ((mobile == null) && !(fixe instanceof Mur)) {
+    		mobile = caisse;
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    	
     }
 
 }

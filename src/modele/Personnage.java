@@ -11,8 +11,14 @@ public class Personnage extends Mobile {
 
     @objid ("eafcb64f-3257-4ce0-83f0-d9d744db45b3")
     public boolean deplacement(Direction direction) {
-    	Tuille tuille_voisine = super.getTuille().tuilleVoisine(direction);
-    	return tuille_voisine.demandeDeplacement();
+    	Tuille tuilleVoisine = super.getTuille().tuilleVoisine(direction);
+    	if (tuilleVoisine.demandeDeplacement(direction, this)) {
+    		super.setTuille(tuilleVoisine);
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
 
 }

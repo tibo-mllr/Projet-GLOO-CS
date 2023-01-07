@@ -14,4 +14,6 @@ public class Mobile {
     public void setTuille(Tuille t) {
     	tuille = t;
     }
+    
+    public abstract boolean deplacement(Direction direction);
 }
