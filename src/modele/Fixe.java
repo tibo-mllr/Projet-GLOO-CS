@@ -7,4 +7,8 @@ public class Fixe {
     @objid ("541f16f3-93e0-4c73-9586-b5e0af4da836")
     private Tuille tuille;
 
+    public Fixe(Tuille tuille){
+        this.tuille = tuille;
+    }
+
 }

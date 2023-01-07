@@ -17,6 +17,13 @@ public class Tuille {
     @objid ("abbda477-ea73-4579-a6b4-1829b77f097a")
     private Entrepot entrepot;
 
+    public Tuille(Fixe fixe, Mobile mobile, Position position, Entrepot entrepot){
+        this.fixe = fixe;
+        this.mobile = mobile;
+        this.position = position;
+        this.entrepot = entrepot;
+    }
+
     @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
     public Tuille tuilleVoisine(Direction direction) {
     	Position position_voisine = position.positionVoisine(direction);

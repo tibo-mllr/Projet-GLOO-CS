@@ -6,6 +6,10 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public class Mobile {
     @objid ("842309ee-a6a1-4ee0-af9b-17e887d7c1cc")
     private Tuille tuille;
+
+    public Mobile(Tuille tuille){
+        this.tuille = tuille;
+    }
     
     public Tuille getTuille() {
     	return tuille;

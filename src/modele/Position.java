@@ -20,18 +20,23 @@ public class Position {
     @objid ("06c993ae-ffe7-4a35-a4d3-455a64dd8822")
     private Entrepot entrepot;
 
+    public Position(int ligne, int colonne) {
+    	indexLigne = ligne;
+    	indexColonne = colonne;    	
+    }
+
     @objid ("4edbd933-54e4-42fd-aab2-6af6cc3c845f")
     public Position positionVoisine(Direction direction) {
     	Position positionVoisine;
     	switch(direction) {
     	case HAUT:
-    		positionVoisine = new Position(indexLigne-1, indexColonne);
+    		positionVoisine = new Position(indexLigne - 1, indexColonne);
 		case BAS:
-			positionVoisine = new Position(indexLigne+1, indexColonne);
+			positionVoisine = new Position(indexLigne + 1, indexColonne);
     	case GAUCHE:
-    		positionVoisine = new Position(indexLigne, indexColonne-1);
+    		positionVoisine = new Position(indexLigne, indexColonne - 1);
     	case DROITE:
-    		positionVoisine = new Position(indexLigne, indexColonne+1);
+    		positionVoisine = new Position(indexLigne, indexColonne + 1);
     	default:
     		positionVoisine = null;
     	}
