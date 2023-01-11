@@ -19,7 +19,8 @@ public class Main implements Runnable{
 
 	public void run() {
 		Entrepot entrepot = new Entrepot(5, 6);
-		Controleur controleur = new Controleur(entrepot);
+		Personnage personnage = new Personnage(entrepot.getTuileDePosition(new Position(1, 1)));
+		Controleur controleur = new Controleur(entrepot, personnage);
 		new FenetreSokoban(controleur);
 	}
 }

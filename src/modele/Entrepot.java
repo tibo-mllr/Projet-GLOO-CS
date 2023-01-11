@@ -3,6 +3,7 @@ package modele;
 import java.util.ArrayList;
 import java.util.List;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
+import controle.ContenuCase;
 
 @objid("26e154aa-b4a1-4890-8686-eb4052e6afdd")
 public class Entrepot {
@@ -23,26 +24,21 @@ public class Entrepot {
 		for (int i=0; i<6; i++) {
 			for (int j=0; j<5; j++) {
 				if (i==0 || i == 5) {
-					Mur mur = new Mur(this.getTuileDePosition(new Position(i, j)));
-					tuilles.add(new Tuille(mur, null, new Position(i, j), this));
+					tuilles.add(new Tuille(ContenuCase.MUR, this));
 				}
 				else {
 					if (j ==0 || j == 4) {
-						Mur mur = new Mur(this.getTuileDePosition(new Position(i, j)));
-						tuilles.add(new Tuille(mur, null, new Position(i, j), this));
+						tuilles.add(new Tuille(ContenuCase.MUR, this));
 					}
 					else {
 						if (i==1 && j==1) {
-							Personnage personnage = new Personnage(this.getTuileDePosition(new Position(i, j)));
-							tuilles.add(new Tuille(null, personnage, new Position(i, j), this));
+							tuilles.add(new Tuille(ContenuCase.JOUEUR, this));
 						}
 						if (i==4 && j==5) {
-							Destination destination = new Destination(this.getTuileDePosition(new Position(i, j)));
-							tuilles.add(new Tuille(destination, null, new Position(i, j), this));
+							tuilles.add(new Tuille(ContenuCase.RANGEMENT, this));
 						}
 						if (i==2 && j==2) {
-							Caisse caisse = new Caisse(this.getTuileDePosition(new Position(i, j)));
-							tuilles.add(new Tuille(null, caisse, new Position(i, j), this));
+							tuilles.add(new Tuille(ContenuCase.CAISSE, this));
 						}
 					}
 				}
@@ -56,6 +52,10 @@ public class Entrepot {
         return tuilles.get(position.getX() + position.getY() * width);
     }
 
+    public Position getPosition(Tuille tuille) {
+    	return positions.get(tuilles.indexOf(tuille));
+    }
+    
     public int getNbColonnes() {
         return width;
     }

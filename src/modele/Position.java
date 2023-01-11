@@ -27,20 +27,18 @@ public class Position {
 
 	@objid("4edbd933-54e4-42fd-aab2-6af6cc3c845f")
 	public Position positionVoisine(Direction direction) {
-		Position positionVoisine;
 		switch (direction) {
 			case HAUT:
-				positionVoisine = new Position(indexLigne - 1, indexColonne);
+				return new Position(indexLigne - 1, indexColonne);
 			case BAS:
-				positionVoisine = new Position(indexLigne + 1, indexColonne);
+				return new Position(indexLigne + 1, indexColonne);
 			case GAUCHE:
-				positionVoisine = new Position(indexLigne, indexColonne - 1);
+				return new Position(indexLigne, indexColonne - 1);
 			case DROITE:
-				positionVoisine = new Position(indexLigne, indexColonne + 1);
+				return new Position(indexLigne, indexColonne + 1);
 			default:
-				positionVoisine = null;
+				return null;
 		}
-		return positionVoisine;
 	}
 
 	public int getX() {
