@@ -10,9 +10,12 @@ import modele.Tuille;
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
 public class Controleur {
     private Entrepot entrepot;
+
+	private Personnage personnage;
     
     public Controleur(Entrepot entrepot) {
     	this.entrepot = entrepot;
+		this.personnage = personnage;
     }
 
     @objid ("804851b6-f891-46ac-8096-6f09045b4e5e")

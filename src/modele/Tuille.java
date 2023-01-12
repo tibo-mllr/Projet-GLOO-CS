@@ -26,8 +26,8 @@ public class Tuille {
 
     @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
     public Tuille tuilleVoisine(Direction direction) {
-    	Position position_voisine = position.positionVoisine(direction);
-    	return entrepot.tuileDePosition(position_voisine);
+    	Position positionVoisine = position.positionVoisine(direction);
+    	return entrepot.getTuileDePosition(positionVoisine);
     }
 
     @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")
