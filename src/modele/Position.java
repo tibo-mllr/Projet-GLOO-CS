@@ -1,8 +1,5 @@
 package modele;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import controle.Direction;
 
@@ -27,20 +24,18 @@ public class Position {
 
 	@objid("4edbd933-54e4-42fd-aab2-6af6cc3c845f")
 	public Position positionVoisine(Direction direction) {
-		Position positionVoisine;
 		switch (direction) {
 			case HAUT:
-				positionVoisine = new Position(indexLigne - 1, indexColonne);
+				return new Position(indexLigne - 1, indexColonne);
 			case BAS:
-				positionVoisine = new Position(indexLigne + 1, indexColonne);
+				return new Position(indexLigne + 1, indexColonne);
 			case GAUCHE:
-				positionVoisine = new Position(indexLigne, indexColonne - 1);
+				return new Position(indexLigne, indexColonne - 1);
 			case DROITE:
-				positionVoisine = new Position(indexLigne, indexColonne + 1);
+				return new Position(indexLigne, indexColonne + 1);
 			default:
-				positionVoisine = null;
+				return null;
 		}
-		return positionVoisine;
 	}
 
 	public int getX() {
@@ -49,6 +44,17 @@ public class Position {
 
 	public int getY() {
 		return indexLigne;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if( obj == this ) return true;
+		 if( obj == null ) return false;
+		 if( obj.getClass() != getClass() ) {
+		 return false;
+		 }
+		 Position other = ( Position ) obj;
+		 return this.indexLigne == other.indexLigne && this.indexColonne == other.indexColonne;
 	}
 
 }

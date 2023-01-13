@@ -9,3 +9,4 @@ public class Destination extends Fixe {
         super(tuille);
     }
 }
+
