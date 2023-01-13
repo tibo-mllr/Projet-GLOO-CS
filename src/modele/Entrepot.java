@@ -23,27 +23,27 @@ public class Entrepot {
 
 		for (int i=0; i<6; i++) {
 			for (int j=0; j<5; j++) {
+				positions.add(new Position(i, j));
 				if (i==0 || i == 5) {
 					tuilles.add(new Tuille(ContenuCase.MUR, this));
 				}
+				else if (j ==0 || j == 4) {
+					tuilles.add(new Tuille(ContenuCase.MUR, this));
+				}
+				else if (i==1 && j==1) {
+					tuilles.add(new Tuille(ContenuCase.JOUEUR, this));
+				}
+				else if (i==4 && j==5) {
+					tuilles.add(new Tuille(ContenuCase.RANGEMENT, this));
+				}
+				else if (i==2 && j==2) {
+					tuilles.add(new Tuille(ContenuCase.CAISSE, this));
+				}
 				else {
-					if (j ==0 || j == 4) {
-						tuilles.add(new Tuille(ContenuCase.MUR, this));
-					}
-					else {
-						if (i==1 && j==1) {
-							tuilles.add(new Tuille(ContenuCase.JOUEUR, this));
-						}
-						if (i==4 && j==5) {
-							tuilles.add(new Tuille(ContenuCase.RANGEMENT, this));
-						}
-						if (i==2 && j==2) {
-							tuilles.add(new Tuille(ContenuCase.CAISSE, this));
-						}
-					}
+					tuilles.add(new Tuille(ContenuCase.CASE_VIDE, this));
 				}
 			}
-		}
+		}		
     }
 
 
@@ -62,6 +62,27 @@ public class Entrepot {
 
     public int getNbLignes() {
         return height;
+    }
+    
+    public ContenuCase getContenu(int i, int j) {
+    	if (i==0 || i == 5) {
+			return ContenuCase.MUR;
+		}
+		else if (j ==0 || j == 4) {
+			return ContenuCase.MUR;
+		}
+		else if (i==1 && j==1) {
+			return ContenuCase.JOUEUR;
+		}
+		else if (i==4 && j==5) {
+			return ContenuCase.RANGEMENT;
+		}
+		else if (i==2 && j==2) {
+			return ContenuCase.CAISSE;
+		}
+		else {
+			return ContenuCase.CASE_VIDE;
+		}
     }
 
 }
