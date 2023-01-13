@@ -13,9 +13,6 @@ public class Tuille {
     @objid ("9104f766-e5ff-4c14-85ff-62787fb6b0ba")
     private Mobile mobile;
 
-    //@objid ("e6abab72-7a87-42a8-8bfd-99623f04c9f6")
-    //private Position position;
-
     @objid ("abbda477-ea73-4579-a6b4-1829b77f097a")
     private Entrepot entrepot;
 
@@ -25,7 +22,7 @@ public class Tuille {
     	case MUR: fixe = new Mur(this); break;
     	case RANGEMENT: fixe = new Destination(this); break;
     	case CAISSE: mobile = new Caisse(this); mobile.setTuille(this); break;
-    	case CAISSE_RANGEE: mobile = new Caisse(this); mobile.setTuille(this); break;
+    	case CAISSE_RANGEE: mobile = new Caisse(this); fixe = new Destination(this); mobile.setTuille(this); break;
     	case JOUEUR: mobile = new Personnage(this); mobile.setTuille(this); break;
     	default: break;
     	}
@@ -35,15 +32,10 @@ public class Tuille {
 
     @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
     public Tuille tuilleVoisine(Direction direction) {
-<<<<<<< HEAD
-    	Position positionVoisine = position.positionVoisine(direction);
-    	return entrepot.getTuileDePosition(positionVoisine);
-=======
     	Position position = entrepot.getPosition(this);
     	
-    	Position position_voisine = position.positionVoisine(direction);
-    	return entrepot.getTuileDePosition(position_voisine);
->>>>>>> Thibault
+    	Position positionVoisine = position.positionVoisine(direction);
+    	return entrepot.getTuileDePosition(positionVoisine);
     }
     
     
@@ -103,6 +95,10 @@ public class Tuille {
     
     public void oubli(){
     	mobile = null;
+    }
+    
+    public boolean occupee(){
+    	return (mobile instanceof Caisse);
     }
 
 }

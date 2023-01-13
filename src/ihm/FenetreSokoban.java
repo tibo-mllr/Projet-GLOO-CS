@@ -23,7 +23,7 @@ public class FenetreSokoban extends JFrame implements KeyListener {
     static final int TAILLE_IMAGE = 32;
 
     private static final int LARGEUR_FENETRE = 20 * TAILLE_IMAGE;
-    private static final int HAUTERU_FENETRE = 12 * TAILLE_IMAGE;
+    private static final int HAUTEUR_FENETRE = 12 * TAILLE_IMAGE;
     private static final int HAUTEUR_TITRE_FENETRE = 20;
     private Controleur controleur;
 
@@ -31,7 +31,7 @@ public class FenetreSokoban extends JFrame implements KeyListener {
         this.controleur = controleur;
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(LARGEUR_FENETRE, HAUTERU_FENETRE + HAUTEUR_TITRE_FENETRE));
+        this.setPreferredSize(new Dimension(LARGEUR_FENETRE, HAUTEUR_FENETRE + HAUTEUR_TITRE_FENETRE));
         this.setTitle("Sokoban");
 
         this.add(new PaneauSokoban(controleur));
@@ -58,11 +58,13 @@ public class FenetreSokoban extends JFrame implements KeyListener {
         if (direction == null)
             return;
         controleur.action(direction);
+        repaint();
+        
         if (controleur.jeuTermine()) {
             JOptionPane.showMessageDialog(this, "Vous avez gagné !");
             System.exit(0);
         }
-        repaint();
+        
     }
 
     @Override
