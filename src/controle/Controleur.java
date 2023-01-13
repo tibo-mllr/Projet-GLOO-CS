@@ -1,12 +1,10 @@
 package controle;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
 import modele.Entrepot;
 import modele.Personnage;
 import modele.Position;
 import modele.Tuille;
-import modele.Mur;
 
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
 public class Controleur {
@@ -37,8 +35,8 @@ public class Controleur {
 	}
 
 	public ContenuCase getContenu(int l, int c) {
-		//TODO
 		Tuille tuille = entrepot.getTuileDePosition(new Position(l, c));
+		return tuille.getContenu();
 	}
 
 }

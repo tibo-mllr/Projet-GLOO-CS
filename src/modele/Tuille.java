@@ -20,8 +20,6 @@ public class Tuille {
     private Entrepot entrepot;
 
     public Tuille(ContenuCase type, Entrepot entrepot){
-        /*this.fixe = fixe;
-        this.mobile = mobile;*/
     	
     	switch(type) {
     	case MUR: fixe = new Mur(this); break;
@@ -32,7 +30,6 @@ public class Tuille {
     	default: break;
     	}
         
-        //this.position = position;
         this.entrepot = entrepot;
     }
 
@@ -76,6 +73,31 @@ public class Tuille {
     		return false;
     	}
     	
+    }
+    
+    public ContenuCase getContenu() {
+    	if (fixe instanceof Mur) {
+			return ContenuCase.MUR;
+		}
+		else if (mobile instanceof Personnage) {
+			return ContenuCase.JOUEUR;
+		}
+		else if (mobile instanceof Caisse) {
+			if (fixe instanceof Destination) {
+				return ContenuCase.CAISSE_RANGEE;
+			}
+			return ContenuCase.CAISSE;
+		}
+		else if (fixe instanceof Destination) {
+			return ContenuCase.RANGEMENT;
+		}
+		else {
+			return ContenuCase.CASE_VIDE;
+		}
+    }
+    
+    public void oubli(){
+    	mobile = null;
     }
 
 }

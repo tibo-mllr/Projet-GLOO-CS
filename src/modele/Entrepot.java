@@ -33,7 +33,7 @@ public class Entrepot {
 				else if (i==1 && j==1) {
 					tuilles.add(new Tuille(ContenuCase.JOUEUR, this));
 				}
-				else if (i==4 && j==5) {
+				else if (i==3 && j==3) {
 					tuilles.add(new Tuille(ContenuCase.RANGEMENT, this));
 				}
 				else if (i==2 && j==2) {
@@ -49,7 +49,7 @@ public class Entrepot {
 
     @objid("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
     public Tuille getTuileDePosition(Position position) {
-        return tuilles.get(position.getX() + position.getY() * width);
+        return tuilles.get(positions.indexOf(position));
     }
 
     public Position getPosition(Tuille tuille) {
@@ -62,27 +62,6 @@ public class Entrepot {
 
     public int getNbLignes() {
         return height;
-    }
-    
-    public ContenuCase getContenu(int i, int j) {
-    	if (i==0 || i == 5) {
-			return ContenuCase.MUR;
-		}
-		else if (j ==0 || j == 4) {
-			return ContenuCase.MUR;
-		}
-		else if (i==1 && j==1) {
-			return ContenuCase.JOUEUR;
-		}
-		else if (i==4 && j==5) {
-			return ContenuCase.RANGEMENT;
-		}
-		else if (i==2 && j==2) {
-			return ContenuCase.CAISSE;
-		}
-		else {
-			return ContenuCase.CASE_VIDE;
-		}
     }
 
 }

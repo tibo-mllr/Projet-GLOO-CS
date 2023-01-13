@@ -1,8 +1,5 @@
 package modele;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import controle.Direction;
 
@@ -47,6 +44,17 @@ public class Position {
 
 	public int getY() {
 		return indexLigne;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if( obj == this ) return true;
+		 if( obj == null ) return false;
+		 if( obj.getClass() != getClass() ) {
+		 return false;
+		 }
+		 Position other = ( Position ) obj;
+		 return this.indexLigne == other.indexLigne && this.indexColonne == other.indexColonne;
 	}
 
 }

@@ -10,6 +10,11 @@ import modele.Position;
 
 public class Main implements Runnable{
 	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Main());
+	}
+	
+	
 	@Override
 	public void run() {
 		Entrepot entrepot = new Entrepot(5, 6);
@@ -18,8 +23,4 @@ public class Main implements Runnable{
 		new FenetreSokoban(controleur);
 	}
 	
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Main());
-	}
-
 }
