@@ -6,8 +6,8 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid("26e154aa-b4a1-4890-8686-eb4052e6afdd")
 public class Entrepot {
-    private int width;
-    private int height;
+    private int nbColonnes;
+    private int nbLignes;
     
     @objid("64fad707-e4ac-48c0-803a-a1b57f236c87")
     private List<Tuille> tuilles = new ArrayList<Tuille>();
@@ -15,9 +15,9 @@ public class Entrepot {
     @objid("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
 
-    public Entrepot(int width, int height) {
-        this.width = width;
-        this.height = height;		
+    public Entrepot(int nbColonnes, int nbLignes) {
+        this.nbColonnes = nbColonnes;
+        this.nbLignes = nbLignes;		
     }
     
     public void addElement(Position position, Tuille tuille) {
@@ -40,11 +40,11 @@ public class Entrepot {
     }
     
     public int getNbColonnes() {
-        return width;
+        return nbColonnes;
     }
 
     public int getNbLignes() {
-        return height;
+        return nbLignes;
     }
 
 }

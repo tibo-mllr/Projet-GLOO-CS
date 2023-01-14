@@ -11,9 +11,6 @@ public class Position {
 	@objid("8c144e84-370f-4419-894f-d8405254485d")
 	private int indexColonne;
 
-	@objid("16e74a7c-691a-43d1-9339-3bd2ec99e8d9")
-	private Tuille tuille;
-
 	@objid("06c993ae-ffe7-4a35-a4d3-455a64dd8822")
 	private Entrepot entrepot;
 
@@ -38,14 +35,6 @@ public class Position {
 		}
 	}
 
-	public int getX() {
-		return indexColonne;
-	}
-
-	public int getY() {
-		return indexLigne;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if( obj == this ) return true;
