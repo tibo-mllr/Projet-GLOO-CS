@@ -11,6 +11,14 @@ import modele.Personnage;
 import modele.Position;
 import modele.Tuille;
 
+/**
+ * Controleur pour le jeu Sokoban
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
 public class Controleur {
 	private Niveau niveau;

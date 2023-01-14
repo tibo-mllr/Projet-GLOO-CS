@@ -16,10 +16,11 @@ import controle.Controleur;
 /**
  * Panneau de l'IHM pour le jeu Sokoban
  * 
- * @author Dominique Marcadet
- * @version 1.0
+ * @author Dominique Marcadet, Thibault Muller, Raphaël Mahaut
+ * @version 2.0
  *
  */
+
 @SuppressWarnings("serial")
 public class PaneauSokoban extends JPanel {
 
@@ -52,10 +53,15 @@ public class PaneauSokoban extends JPanel {
         // Le côté IHM raisonne en [x, y]
         // Donc x <=> colonne et y <=> ligne
         
+        int nbLignes = controleur.getNbLignes();
+        int nbColonnes = controleur.getNbColonnes();
         
-        for (int l = 0; l < controleur.getNbLignes(); ++l) {
-            for (int c = 0; c < controleur.getNbColonnes(); ++c) {
-                g.drawImage(images.get(controleur.getContenu(l, c)), c * TAILLE_IMAGE, l * TAILLE_IMAGE, TAILLE_IMAGE,
+        int decalageLat = (FenetreSokoban.LARGEUR_FENETRE - nbColonnes*TAILLE_IMAGE)/2 - 8; 
+        int decalageHor = (FenetreSokoban.HAUTEUR_FENETRE - nbLignes*TAILLE_IMAGE)/2 - 8;
+        
+        for (int l = 0; l < nbLignes; ++l) {
+            for (int c = 0; c < nbColonnes; ++c) {
+                g.drawImage(images.get(controleur.getContenu(l, c)), decalageLat + (c * TAILLE_IMAGE), decalageHor + (l * TAILLE_IMAGE), TAILLE_IMAGE,
                         TAILLE_IMAGE, null);
             }
         }

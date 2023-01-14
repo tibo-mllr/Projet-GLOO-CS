@@ -13,17 +13,18 @@ import controle.Direction;
 /**
  * Fenêtre de l'IHM pour le jeu Sokoban
  * 
- * @author Dominique Marcadet
- * @version 1.0
+ * @author Dominique Marcadet, Thibault Muller, Raphaël Mahaut
+ * @version 2.0
  *
  */
+
 @SuppressWarnings("serial")
 public class FenetreSokoban extends JFrame implements KeyListener {
 
     static final int TAILLE_IMAGE = 32;
 
-    private static final int LARGEUR_FENETRE = 20 * TAILLE_IMAGE;
-    private static final int HAUTEUR_FENETRE = 12 * TAILLE_IMAGE;
+    static final int LARGEUR_FENETRE = 20 * TAILLE_IMAGE;
+    static final int HAUTEUR_FENETRE = 12 * TAILLE_IMAGE;
     private static final int HAUTEUR_TITRE_FENETRE = 20;
     private Controleur controleur;
 
@@ -76,7 +77,7 @@ public class FenetreSokoban extends JFrame implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         switch(e.getKeyCode()) {
-        case KeyEvent.VK_R -> controleur.recommencer();
+        case KeyEvent.VK_R: controleur.recommencer(); repaint(); break;
         }
     }
 

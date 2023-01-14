@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+/**
+ * Entrepot contenant les cases du jeu et leurs positions
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 @objid("26e154aa-b4a1-4890-8686-eb4052e6afdd")
 public class Entrepot {
     private int nbColonnes;

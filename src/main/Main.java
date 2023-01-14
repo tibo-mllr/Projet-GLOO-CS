@@ -5,6 +5,14 @@ import javax.swing.SwingUtilities;
 import controle.Controleur;
 import ihm.FenetreSokoban;
 
+/**
+ * Fichier principal à executer pour lancer Sokoban
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 
 public class Main implements Runnable{
 	

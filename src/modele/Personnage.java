@@ -4,6 +4,14 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 import controle.Direction;
 
+/**
+ * Représentation du joueur dans le jeu
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 @objid ("e4a4bca7-c6da-482f-b386-834880b5d059")
 public class Personnage extends Mobile {
     

@@ -9,6 +9,14 @@ import java.util.Scanner;
 import controle.ContenuCase;
 import controle.Controleur;
 
+/**
+ * Classe permettant de gérer les niveaux et de générer l'entrepot et l'ensemble des objets qui y sont contenus
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 public class Niveau {
 	private int niveau; 
 	

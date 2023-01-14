@@ -5,6 +5,15 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import controle.ContenuCase;
 import controle.Direction;
 
+
+/**
+ * Element représentant les cases du jeu
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 @objid ("7ac4f54a-f5bd-4501-9651-9ca090bcdcda")
 public class Tuille {
     @objid ("e05013da-1500-4137-81b7-c9d188449edd")
