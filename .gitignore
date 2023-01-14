@@ -1,6 +1,7 @@
 /data/
 /bin/
 /.classpath
+/.metadata/
 /.runtime/
 /.settings/
 /.project
