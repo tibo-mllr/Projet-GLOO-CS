@@ -15,7 +15,7 @@ public class Entrepot {
     @objid("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
 
-    public Entrepot(int nbColonnes, int nbLignes) {
+    public Entrepot(int nbLignes, int nbColonnes) {
         this.nbColonnes = nbColonnes;
         this.nbLignes = nbLignes;		
     }

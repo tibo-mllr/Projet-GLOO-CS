@@ -11,8 +11,5 @@ public abstract class Fixe {
         this.tuille = tuille;
     }
     
-    public Tuille getTuille() {
-    	return tuille;
-    }
 
 }

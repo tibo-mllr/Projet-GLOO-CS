@@ -61,15 +61,23 @@ public class FenetreSokoban extends JFrame implements KeyListener {
         repaint();
         
         if (controleur.jeuTermine()) {
-            JOptionPane.showMessageDialog(this, "Vous avez gagné !");
-            System.exit(0);
+            if (!controleur.recommencer()){
+            	JOptionPane.showMessageDialog(this, "Vous avez terminé tous les niveaux!");
+            	System.exit(0);
+            }
+        	int option = JOptionPane.showConfirmDialog(this, "Bravo, vous avez réussi! Passez au niveau suivant", "Niveau suivant", JOptionPane.YES_NO_OPTION);
+            if (option == 1) {
+            	System.exit(0);
+            }             
         }
         
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // nothing
+        switch(e.getKeyCode()) {
+        case KeyEvent.VK_R -> controleur.recommencer();
+        }
     }
 
 }

@@ -1,26 +1,34 @@
 package controle;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 import modele.Entrepot;
+import modele.Niveau;
 import modele.Personnage;
 import modele.Position;
 import modele.Tuille;
 
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
 public class Controleur {
+	private Niveau niveau;
     private Entrepot entrepot;
 	private Personnage personnage;
-	private List<Tuille> objectifs = new ArrayList<Tuille>();
+	private List<Tuille> objectifs;
     
-    public Controleur(Entrepot entrepot, Personnage personnage) {
-    	this.entrepot = entrepot;
-		this.personnage = personnage;
+    public Controleur() {
+    	this.niveau = new Niveau(1);
+    	niveau.genererNiveau(this);
     }
-
+     
+    public void setAttributes(Entrepot entrepot, Personnage personnage, List<Tuille> objectifs) {
+    	this.entrepot = entrepot;
+    	this.personnage = personnage;
+    	this.objectifs = objectifs;
+    }
+    
     @objid ("804851b6-f891-46ac-8096-6f09045b4e5e")
     public void action(Direction direction) {
     	personnage.deplacement(direction);
@@ -32,7 +40,12 @@ public class Controleur {
 				return false;
 			}
 		}
+		niveau.niveauSup();
 		return true;
+	}
+	
+	public boolean recommencer() {
+		return niveau.genererNiveau(this);
 	}
 
 	public int getNbLignes() {
@@ -51,8 +64,6 @@ public class Controleur {
 		return tuille.getContenu();
 	}
 	
-	public void addObjectif(Tuille destination) {
-		objectifs.add(destination);
-	}
+	
 
 }
