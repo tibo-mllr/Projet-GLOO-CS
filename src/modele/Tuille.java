@@ -19,11 +19,12 @@ public class Tuille {
     public Tuille(ContenuCase type, Entrepot entrepot){
     	
     	switch(type) {
-    	case MUR: fixe = new Mur(this); break;
-    	case RANGEMENT: fixe = new Destination(this); break;
-    	case CAISSE: mobile = new Caisse(this); mobile.setTuille(this); break;
-    	case CAISSE_RANGEE: mobile = new Caisse(this); fixe = new Destination(this); mobile.setTuille(this); break;
-    	case JOUEUR: mobile = new Personnage(this); mobile.setTuille(this); break;
+    	case CASE_VIDE: fixe = Fixe.NORMAL; break;
+    	case MUR: fixe = Fixe.MUR; break;
+    	case RANGEMENT: fixe = Fixe.DESTINATION; break;
+    	case CAISSE: fixe = Fixe.NORMAL; mobile = new Caisse(this); mobile.setTuille(this); break;
+    	case CAISSE_RANGEE: fixe = Fixe.DESTINATION; mobile = new Caisse(this); mobile.setTuille(this); break;
+    	case JOUEUR: fixe = Fixe.NORMAL; mobile = new Personnage(this); mobile.setTuille(this); break;
     	default: break;
     	}
         
@@ -42,7 +43,7 @@ public class Tuille {
 
     @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")
     public boolean demandeDeplacement(Direction direction, Personnage personnage) {
-    	if (!(mobile instanceof Caisse) && !(fixe instanceof Mur)) {
+    	if (!(mobile instanceof Caisse) && !(fixe == Fixe.MUR)) {
     		mobile = personnage;
     		return true;
     	}
@@ -62,7 +63,7 @@ public class Tuille {
     }
     
     public boolean demandeDeplacement(Caisse caisse) {
-    	if ((mobile == null) && !(fixe instanceof Mur)) {
+    	if ((mobile == null) && !(fixe == Fixe.MUR)) {
     		mobile = caisse;
     		return true;
     	}
@@ -73,19 +74,20 @@ public class Tuille {
     }
     
     public ContenuCase getContenu() {
-    	if (fixe instanceof Mur) {
+    	
+    	if (fixe == Fixe.MUR) {
 			return ContenuCase.MUR;
 		}
 		else if (mobile instanceof Personnage) {
 			return ContenuCase.JOUEUR;
 		}
 		else if (mobile instanceof Caisse) {
-			if (fixe instanceof Destination) {
+			if (fixe == Fixe.DESTINATION) {
 				return ContenuCase.CAISSE_RANGEE;
 			}
 			return ContenuCase.CAISSE;
 		}
-		else if (fixe instanceof Destination) {
+		else if (fixe == Fixe.DESTINATION) {
 			return ContenuCase.RANGEMENT;
 		}
 		else {
@@ -93,9 +95,11 @@ public class Tuille {
 		}
     }
     
+    
     public void oubli(){
     	mobile = null;
     }
+    
     
     public boolean occupee(){
     	return (mobile instanceof Caisse);
