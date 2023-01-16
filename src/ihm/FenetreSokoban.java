@@ -23,8 +23,8 @@ public class FenetreSokoban extends JFrame implements KeyListener {
 
     static final int TAILLE_IMAGE = 32;
 
-    static final int LARGEUR_FENETRE = 20 * TAILLE_IMAGE;
-    static final int HAUTEUR_FENETRE = 12 * TAILLE_IMAGE;
+    static final int LARGEUR_FENETRE = 22 * TAILLE_IMAGE;
+    static final int HAUTEUR_FENETRE = 15 * TAILLE_IMAGE;
     private static final int HAUTEUR_TITRE_FENETRE = 20;
     private Controleur controleur;
 
