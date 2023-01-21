@@ -20,7 +20,11 @@ public class Entrepot {
     @objid ("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
 
-    
+    @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
+    public Tuille getTuille(Position position) {
+        int index = positions.indexOf(position);
+        return tuilles.get(index);
+    }
 
     @objid ("e03c3746-f81b-4bb0-b1c4-3dda9aaa9775")
     public Entrepot(int nbLignes, int nbColonnes) {
@@ -34,27 +38,11 @@ public class Entrepot {
         tuilles.add(tuille);
     }
 
-    
-    
-    
     @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
     public Position getPosition(Tuille tuille) {
         return positions.get(tuilles.indexOf(tuille));
     }
-    
-    @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
-    public Tuille getTuille(Position position) {
-        int index = positions.indexOf(position);
-        return tuilles.get(index);
-    }
-    
-    public Tuille tuilleVoisine(Tuille tuille, Direction direction) {
-    	Position positionVoisine = positions.get(tuilles.indexOf(tuille)).positionVoisine(direction);
-    	return getTuille(positionVoisine);
-    }
-    
-    
-    
+
     @objid ("31a8e51c-68b2-42bd-9aa3-7337cbfa7bd8")
     public int getNbColonnes() {
         return nbColonnes;
@@ -72,6 +60,12 @@ public class Entrepot {
             return null;
         }
         return tuilles.get(index).getContenu();
+    }
+
+    @objid ("cc666222-6b8f-43d8-85de-86ff926cf61b")
+    public Tuille tuilleVoisine(Tuille tuille, Direction direction) {
+        Position positionVoisine = positions.get(tuilles.indexOf(tuille)).positionVoisine(direction);
+        return getTuille(positionVoisine);
     }
 
 }

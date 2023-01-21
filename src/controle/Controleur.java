@@ -8,7 +8,7 @@ import modele.Personnage;
 import modele.Tuille;
 
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
-public class Controleur {
+public class Controleur implements IControleur {
     @objid ("104b3a29-b258-4094-896f-a9752ca6e02c")
     private Niveau niveau;
 
