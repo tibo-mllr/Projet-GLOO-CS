@@ -38,7 +38,7 @@ public class Niveau {
                     
                     switch (line[2]) {
                     case "V":
-                    	tuilleTemporaire = new Tuille(Fixe.NORMAL, null, entrepot);
+                        tuilleTemporaire = new Tuille(Fixe.NORMAL, null, entrepot);
                         entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
                         break;
                     case "M":
@@ -46,13 +46,13 @@ public class Niveau {
                         entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
                         break;
                     case "C":
-                    	mobileTemporaire = new Caisse();
+                        mobileTemporaire = new Caisse();
                         tuilleTemporaire = new Tuille(Fixe.NORMAL, mobileTemporaire, entrepot);
                         entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
                         mobileTemporaire.setTuille(tuilleTemporaire);
                         break;
                     case "CR":
-                    	mobileTemporaire = new Caisse();
+                        mobileTemporaire = new Caisse();
                         tuilleTemporaire = new Tuille(Fixe.DESTINATION, mobileTemporaire, entrepot);
                         entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
                         mobileTemporaire.setTuille(tuilleTemporaire);
@@ -66,7 +66,7 @@ public class Niveau {
                         objectifs.add(tuilleTemporaire);
                         break;
                     case "J":
-                    	personnage = new Personnage();
+                        personnage = new Personnage();
                         tuilleTemporaire = new Tuille(Fixe.NORMAL, personnage, entrepot);
                         entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
                         personnage.setTuille(tuilleTemporaire);

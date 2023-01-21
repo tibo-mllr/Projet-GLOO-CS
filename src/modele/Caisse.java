@@ -8,9 +8,10 @@ public class Caisse extends Mobile {
     public Caisse() {
         super();
     }
-    
+
+    @objid ("95988845-d292-40cc-acb5-7f9b26c90587")
     public boolean capablePousser(Mobile objet) {
-    	return false;
+        return false;
     }
 
 }

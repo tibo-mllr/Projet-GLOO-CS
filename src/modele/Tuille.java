@@ -17,9 +17,7 @@ public class Tuille {
 
     @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
     public Tuille tuilleVoisine(Direction direction) {
-        Position position = entrepot.getPosition(this);
-        Position positionVoisine = position.positionVoisine(direction);
-        return entrepot.getTuileDePosition(positionVoisine);
+        return entrepot.tuilleVoisine(this, direction);
     }
 
     @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")
@@ -28,8 +26,8 @@ public class Tuille {
             return false;
         }
         if (mobile == null) {
-        	mobile = demandeur;
-        	return true;
+            mobile = demandeur;
+            return true;
         }
         if (demandeur.capablePousser(mobile)) {
             if (mobile.deplacement(direction)) {

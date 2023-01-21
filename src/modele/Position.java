@@ -11,6 +11,9 @@ public class Position {
     @objid ("8c144e84-370f-4419-894f-d8405254485d")
     private int indexColonne;
 
+    @objid ("06c993ae-ffe7-4a35-a4d3-455a64dd8822")
+    private Entrepot entrepot;
+
     @objid ("4edbd933-54e4-42fd-aab2-6af6cc3c845f")
     public Position positionVoisine(Direction direction) {
         switch (direction) {
@@ -39,7 +42,7 @@ public class Position {
         if( obj == this ) return true;
         if( obj == null ) return false;
         if( obj.getClass() != getClass() ) {
-        	 return false;
+             return false;
          }
          Position other = ( Position ) obj;
         return this.indexLigne == other.indexLigne && this.indexColonne == other.indexColonne;
