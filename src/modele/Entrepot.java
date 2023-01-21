@@ -4,55 +4,61 @@ import java.util.ArrayList;
 import java.util.List;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-/**
- * Entrepot contenant les cases du jeu et leurs positions
- * 
- * @author Thibault Muller, Raphaël Mahaut
- * @version 1.0
- *
- */
+import controle.ContenuCase;
 
-@objid("26e154aa-b4a1-4890-8686-eb4052e6afdd")
+@objid ("26e154aa-b4a1-4890-8686-eb4052e6afdd")
 public class Entrepot {
+    @objid ("e2e9c129-b35c-41e4-ae95-9633894c734a")
     private int nbColonnes;
+
+    @objid ("1f300d5e-ce38-494e-b0f5-68a17f37b6f1")
     private int nbLignes;
-    
-    @objid("64fad707-e4ac-48c0-803a-a1b57f236c87")
+
+    @objid ("64fad707-e4ac-48c0-803a-a1b57f236c87")
     private List<Tuille> tuilles = new ArrayList<Tuille>();
 
-    @objid("1132815e-53f9-4a82-8567-322fff810193")
+    @objid ("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
 
-    public Entrepot(int nbLignes, int nbColonnes) {
-        this.nbColonnes = nbColonnes;
-        this.nbLignes = nbLignes;		
-    }
-    
-    public void addElement(Position position, Tuille tuille) {
-    	positions.add(position);
-    	tuilles.add(tuille);
-    }
-
-
-    @objid("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
+    @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
     public Tuille getTuileDePosition(Position position) {
-    	int index = positions.indexOf(position);
-    	if (index == -1) {
-    		return null;
-    	}
+        int index = positions.indexOf(position);
         return tuilles.get(index);
     }
 
-    public Position getPosition(Tuille tuille) {
-    	return positions.get(tuilles.indexOf(tuille));
+    @objid ("e03c3746-f81b-4bb0-b1c4-3dda9aaa9775")
+    public Entrepot(int nbLignes, int nbColonnes) {
+        this.nbColonnes = nbColonnes;
+        this.nbLignes = nbLignes;
     }
-    
+
+    @objid ("3cdd3fc6-976b-4555-88d2-7e083d7758d1")
+    public void addElement(Position position, Tuille tuille) {
+        positions.add(position);
+        tuilles.add(tuille);
+    }
+
+    @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
+    public Position getPosition(Tuille tuille) {
+        return positions.get(tuilles.indexOf(tuille));
+    }
+
+    @objid ("31a8e51c-68b2-42bd-9aa3-7337cbfa7bd8")
     public int getNbColonnes() {
         return nbColonnes;
     }
 
+    @objid ("28d65bad-07c6-4c11-a7f2-fccd70222b3c")
     public int getNbLignes() {
         return nbLignes;
+    }
+    
+    public ContenuCase getContenu(int l, int c) {
+        int index = positions.indexOf(new Position(l, c));
+        if (index == -1) {
+            return null;
+        }
+        return tuilles.get(index).getContenu();
     }
 
 }

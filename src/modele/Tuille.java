@@ -1,22 +1,12 @@
 package modele;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
 import controle.ContenuCase;
 import controle.Direction;
 
-
-/**
- * Element représentant les cases du jeu
- * 
- * @author Thibault Muller, Raphaël Mahaut
- * @version 1.0
- *
- */
-
 @objid ("7ac4f54a-f5bd-4501-9651-9ca090bcdcda")
 public class Tuille {
-    @objid ("e05013da-1500-4137-81b7-c9d188449edd")
+    @objid ("581815d8-5687-4895-81b1-85be47ebe507")
     private Fixe fixe;
 
     @objid ("9104f766-e5ff-4c14-85ff-62787fb6b0ba")
@@ -25,93 +15,68 @@ public class Tuille {
     @objid ("abbda477-ea73-4579-a6b4-1829b77f097a")
     private Entrepot entrepot;
 
-    public Tuille(ContenuCase type, Entrepot entrepot){
-    	
-    	switch(type) {
-    	case CASE_VIDE: fixe = Fixe.NORMAL; break;
-    	case MUR: fixe = Fixe.MUR; break;
-    	case RANGEMENT: fixe = Fixe.DESTINATION; break;
-    	case CAISSE: fixe = Fixe.NORMAL; mobile = new Caisse(this); mobile.setTuille(this); break;
-    	case CAISSE_RANGEE: fixe = Fixe.DESTINATION; mobile = new Caisse(this); mobile.setTuille(this); break;
-    	case JOUEUR: fixe = Fixe.NORMAL; mobile = new Personnage(this); mobile.setTuille(this); break;
-    	default: break;
-    	}
-        
+    @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
+    public Tuille tuilleVoisine(Direction direction) {
+        Position position = entrepot.getPosition(this);
+        Position positionVoisine = position.positionVoisine(direction);
+        return entrepot.getTuileDePosition(positionVoisine);
+    }
+
+    @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")
+    public boolean demandeDeplacement(Direction direction, Mobile demandeur) {
+        if (fixe == Fixe.MUR){
+            return false;
+        }
+        if (mobile == null) {
+        	mobile = demandeur;
+        	return true;
+        }
+        if (demandeur.capablePousser(mobile)) {
+            if (mobile.deplacement(direction)) {
+                mobile = demandeur;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @objid ("37c0c66e-be7f-48ed-9fa3-b804bfc74de2")
+    public Tuille(Fixe fixe, Mobile mobile, Entrepot entrepot) {
+        this.fixe = fixe;
+        this.mobile = mobile;
         this.entrepot = entrepot;
     }
 
-    @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
-    public Tuille tuilleVoisine(Direction direction) {
-    	Position position = entrepot.getPosition(this);
-    	
-    	Position positionVoisine = position.positionVoisine(direction);
-    	return entrepot.getTuileDePosition(positionVoisine);
-    }
-    
-    
-
-    @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")
-    public boolean demandeDeplacement(Direction direction, Personnage personnage) {
-    	if (!(mobile instanceof Caisse) && !(fixe == Fixe.MUR)) {
-    		mobile = personnage;
-    		return true;
-    	}
-    	else if (mobile instanceof Caisse) {
-    		if (mobile.deplacement(direction)) {
-    			mobile = personnage;
-    			return true;
-    		}
-    		else {
-    			return false;
-    		}
-    	}
-    	else {
-    		return false;
-    	}
-    	
-    }
-    
-    public boolean demandeDeplacement(Caisse caisse) {
-    	if ((mobile == null) && !(fixe == Fixe.MUR)) {
-    		mobile = caisse;
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
-    	
-    }
-    
+    @objid ("e9bfa4ae-640e-4d80-842d-87521a10ca82")
     public ContenuCase getContenu() {
-    	
-    	if (fixe == Fixe.MUR) {
-			return ContenuCase.MUR;
-		}
-		else if (mobile instanceof Personnage) {
-			return ContenuCase.JOUEUR;
-		}
-		else if (mobile instanceof Caisse) {
-			if (fixe == Fixe.DESTINATION) {
-				return ContenuCase.CAISSE_RANGEE;
-			}
-			return ContenuCase.CAISSE;
-		}
-		else if (fixe == Fixe.DESTINATION) {
-			return ContenuCase.RANGEMENT;
-		}
-		else {
-			return ContenuCase.CASE_VIDE;
-		}
+        if (fixe == Fixe.MUR) {
+            return ContenuCase.MUR;
+        }
+        else if (mobile instanceof Personnage) {
+            return ContenuCase.JOUEUR;
+        }
+        else if (mobile instanceof Caisse) {
+            if (fixe == Fixe.DESTINATION) {
+                return ContenuCase.CAISSE_RANGEE;
+            }
+            return ContenuCase.CAISSE;
+        }
+        else if (fixe == Fixe.DESTINATION) {
+            return ContenuCase.RANGEMENT;
+        }
+        else {
+            return ContenuCase.CASE_VIDE;
+        }
     }
-    
-    
-    public void oubli(){
-    	mobile = null;
+
+    @objid ("80a52d75-3dd9-4ab8-8bff-5680372bcbcb")
+    public void oubli() {
+        mobile = null;
     }
-    
-    
-    public boolean occupee(){
-    	return (mobile instanceof Caisse);
+
+    @objid ("466e02a1-9f6f-4b2a-a845-193b97d2d95f")
+    public boolean occupee() {
+        return (mobile instanceof Caisse);
     }
 
 }

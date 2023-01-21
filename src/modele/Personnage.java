@@ -2,34 +2,17 @@ package modele;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-import controle.Direction;
-
-/**
- * Représentation du joueur dans le jeu
- * 
- * @author Thibault Muller, Raphaël Mahaut
- * @version 1.0
- *
- */
-
 @objid ("e4a4bca7-c6da-482f-b386-834880b5d059")
 public class Personnage extends Mobile {
     
-    public Personnage(Tuille tuille){
-       super(tuille);
-    }
-
-    @objid ("eafcb64f-3257-4ce0-83f0-d9d744db45b3")
-    public boolean deplacement(Direction direction) {
-    	Tuille tuilleVoisine = super.getTuille().tuilleVoisine(direction);
-    	if (tuilleVoisine.demandeDeplacement(direction, this)) {
-    		super.getTuille().oubli();
-    		super.setTuille(tuilleVoisine);
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
+    @objid ("840f3604-7967-4fc4-a392-fd910e83ad79")
+    public Personnage() {
+    	super();
+    }       
+    
+    
+    public boolean capablePousser(Mobile objet) {
+    	return (objet instanceof Caisse);
     }
 
 }
