@@ -30,7 +30,7 @@ public class Niveau {
         int nbDestinations = 0;
         
         try{
-            File file = new File("niveaux/niveau" + niveau + ".csv");
+            File file = new File("niveaux/niveau_" + niveau + ".csv");
             
             try (Scanner scan = new java.util.Scanner(file)) {
                 int i = 0;
@@ -84,13 +84,13 @@ public class Niveau {
                     i++;
                 }
                 if (nbCaisses != nbDestinations) {
-                	System.out.println("le fichier " + "niveau" + niveau + ".csv" + " ne correspond pas à un niveau car il n'y a pas autant de caisses que de destinations");
+                	System.out.println("le fichier " + "niveau_" + niveau + ".csv" + " ne correspond pas à un niveau car il n'y a pas autant de caisses que de destinations");
                 	niveau++;
                 	return genererNiveau(controleur);
                 }
                 
                 if (personnage == null) {
-                	System.out.println("le fichier " + "niveau" + niveau + ".csv" + " ne correspond pas à un niveau car n'a pas de personnage");
+                	System.out.println("le fichier " + "niveau_" + niveau + ".csv" + " ne correspond pas à un niveau car n'a pas de personnage");
                 	niveau++;
                 	return genererNiveau(controleur);
                 }
@@ -100,7 +100,7 @@ public class Niveau {
                 
                 
             } catch (NumberFormatException e) {
-                System.out.println("le format du fichier " + "niveaux/niveau" + niveau + ".csv" + " n'est pas compatible");
+                System.out.println("le format du fichier " + "niveaux/niveau_" + niveau + ".csv" + " n'est pas compatible");
                 e.printStackTrace();
                 niveau++;
                 return genererNiveau(controleur);
