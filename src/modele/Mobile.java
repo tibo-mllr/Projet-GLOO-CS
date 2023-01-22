@@ -8,11 +8,6 @@ public abstract class Mobile {
     @objid ("842309ee-a6a1-4ee0-af9b-17e887d7c1cc")
     private Tuille tuille;
 
-    @objid ("c6b0ccee-fb21-47fb-880c-57c36f3c8f12")
-    public Tuille getTuille() {
-        return tuille;
-    }
-
     @objid ("6db1cb8a-0f2a-48ad-9949-aaed267f6ac7")
     public void setTuille(Tuille nouvelleTuille) {
         tuille = nouvelleTuille;

@@ -9,39 +9,41 @@ import controle.Direction;
 @objid ("26e154aa-b4a1-4890-8686-eb4052e6afdd")
 public class Entrepot {
     @objid ("e2e9c129-b35c-41e4-ae95-9633894c734a")
-    private int nbColonnes;
+    private int nbColonnes = 0;
 
     @objid ("1f300d5e-ce38-494e-b0f5-68a17f37b6f1")
-    private int nbLignes;
+    private int nbLignes = 0;
 
     @objid ("64fad707-e4ac-48c0-803a-a1b57f236c87")
     private List<Tuille> tuilles = new ArrayList<Tuille>();
 
     @objid ("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
-
+    
+    @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
+    public Position getPosition(Tuille tuille) {
+        return positions.get(tuilles.indexOf(tuille));
+    }
+    
     @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
     public Tuille getTuille(Position position) {
         int index = positions.indexOf(position);
         return tuilles.get(index);
     }
 
-    @objid ("e03c3746-f81b-4bb0-b1c4-3dda9aaa9775")
-    public Entrepot(int nbLignes, int nbColonnes) {
-        this.nbColonnes = nbColonnes;
-        this.nbLignes = nbLignes;
-    }
-
     @objid ("3cdd3fc6-976b-4555-88d2-7e083d7758d1")
-    public void addElement(Position position, Tuille tuille) {
-        positions.add(position);
+    public void addElement(int indexLigne, int indexColonne, Tuille tuille) {
+        positions.add(new Position(indexLigne, indexColonne));
         tuilles.add(tuille);
+        if (indexLigne >= nbLignes) {
+        	nbLignes = indexLigne + 1;
+        }
+        if (indexColonne >= nbColonnes) {
+        	nbColonnes = indexColonne + 1;
+        }
     }
 
-    @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
-    public Position getPosition(Tuille tuille) {
-        return positions.get(tuilles.indexOf(tuille));
-    }
+    
 
     @objid ("31a8e51c-68b2-42bd-9aa3-7337cbfa7bd8")
     public int getNbColonnes() {

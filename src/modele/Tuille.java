@@ -14,7 +14,15 @@ public class Tuille {
 
     @objid ("abbda477-ea73-4579-a6b4-1829b77f097a")
     private Entrepot entrepot;
-
+    
+    @objid ("37c0c66e-be7f-48ed-9fa3-b804bfc74de2")
+    public Tuille(Fixe fixe, Mobile mobile, Entrepot entrepot) {
+        this.fixe = fixe;
+        this.mobile = mobile;
+        this.entrepot = entrepot;
+    }
+    
+    
     @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
     public Tuille tuilleVoisine(Direction direction) {
         return entrepot.tuilleVoisine(this, direction);
@@ -38,12 +46,7 @@ public class Tuille {
         return false;
     }
 
-    @objid ("37c0c66e-be7f-48ed-9fa3-b804bfc74de2")
-    public Tuille(Fixe fixe, Mobile mobile, Entrepot entrepot) {
-        this.fixe = fixe;
-        this.mobile = mobile;
-        this.entrepot = entrepot;
-    }
+    
 
     @objid ("e9bfa4ae-640e-4d80-842d-87521a10ca82")
     public ContenuCase getContenu() {

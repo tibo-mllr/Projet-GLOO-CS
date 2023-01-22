@@ -21,71 +21,89 @@ public class Niveau {
     @objid ("86cfb652-f257-4ad4-aec4-c778fe945caf")
     public boolean genererNiveau(Controleur controleur) {
         String[] line;
-        Entrepot entrepot;
+        Entrepot entrepot= new Entrepot();
         Tuille tuilleTemporaire;
         Mobile mobileTemporaire;
         Personnage personnage = null;
         List<Tuille> objectifs = new ArrayList<Tuille>();
+        int nbCaisses = 0;
+        int nbDestinations = 0;
         
         try{
             File file = new File("niveaux/niveau" + niveau + ".csv");
+            
             try (Scanner scan = new java.util.Scanner(file)) {
-                line = scan.nextLine().split(",");
-                entrepot = new Entrepot(Integer.parseInt(line[0]), Integer.parseInt(line[1]));
+                int i = 0;
                 
                 while(scan.hasNextLine()){
                     line = scan.nextLine().split(",");
                     
-                    switch (line[2]) {
-                    case "V":
-                        tuilleTemporaire = new Tuille(Fixe.NORMAL, null, entrepot);
-                        entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
-                        break;
-                    case "M":
-                        tuilleTemporaire = new Tuille(Fixe.MUR, null, entrepot);
-                        entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
-                        break;
-                    case "C":
-                        mobileTemporaire = new Caisse();
-                        tuilleTemporaire = new Tuille(Fixe.NORMAL, mobileTemporaire, entrepot);
-                        entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
-                        mobileTemporaire.setTuille(tuilleTemporaire);
-                        break;
-                    case "CR":
-                        mobileTemporaire = new Caisse();
-                        tuilleTemporaire = new Tuille(Fixe.DESTINATION, mobileTemporaire, entrepot);
-                        entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
-                        mobileTemporaire.setTuille(tuilleTemporaire);
-                        
-                        objectifs.add(tuilleTemporaire);
-                        break;
-                    case "R":
-                        tuilleTemporaire = new Tuille(Fixe.DESTINATION, null, entrepot);
-                        entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
-                        
-                        objectifs.add(tuilleTemporaire);
-                        break;
-                    case "J":
-                        personnage = new Personnage();
-                        tuilleTemporaire = new Tuille(Fixe.NORMAL, personnage, entrepot);
-                        entrepot.addElement(new Position(Integer.parseInt(line[0]), Integer.parseInt(line[1])), tuilleTemporaire);
-                        personnage.setTuille(tuilleTemporaire);
-                        break;
-                    default:
-                        break;                
+                    for (int j = 0; j < line.length; j++) {
+                    	switch (line[j]) {
+		                    case "V":
+		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, null, entrepot);
+		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        break;
+		                    case "M":
+		                        tuilleTemporaire = new Tuille(Fixe.MUR, null, entrepot);
+		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        break;
+		                    case "C":
+		                        mobileTemporaire = new Caisse();
+		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, mobileTemporaire, entrepot);
+		                        mobileTemporaire.setTuille(tuilleTemporaire);
+		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        nbCaisses++;
+		                        break;
+		                    case "R":
+		                        mobileTemporaire = new Caisse();
+		                        tuilleTemporaire = new Tuille(Fixe.DESTINATION, mobileTemporaire, entrepot);
+		                        mobileTemporaire.setTuille(tuilleTemporaire);
+		                        objectifs.add(tuilleTemporaire);
+		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        nbCaisses++;
+		                        nbDestinations++;
+		                        break;
+		                    case "D":
+		                        tuilleTemporaire = new Tuille(Fixe.DESTINATION, null, entrepot);
+		                        objectifs.add(tuilleTemporaire);
+		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        nbDestinations++;
+		                        break;
+		                    case "J":
+		                        personnage = new Personnage();
+		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, personnage, entrepot);
+		                        personnage.setTuille(tuilleTemporaire);
+		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        break;
+		                    default:
+		                        break;                
+                    	}
+                    		
                     }
-                
+                    i++;
+                }
+                if (nbCaisses != nbDestinations) {
+                	System.out.println("le fichier " + "niveau" + niveau + ".csv" + " ne correspond pas à un niveau car il n'y a pas autant de caisses que de destinations");
+                	niveau++;
+                	return genererNiveau(controleur);
                 }
                 
+                if (personnage == null) {
+                	System.out.println("le fichier " + "niveau" + niveau + ".csv" + " ne correspond pas à un niveau car n'a pas de personnage");
+                	niveau++;
+                	return genererNiveau(controleur);
+                }
                 controleur.setAttributes(entrepot, personnage, objectifs);
                 
                 return true;
                 
                 
             } catch (NumberFormatException e) {
-                System.out.println("le format du fichier n'est pas compatible");
+                System.out.println("le format du fichier " + "niveaux/niveau" + niveau + ".csv" + " n'est pas compatible");
                 e.printStackTrace();
-                return false;
+                niveau++;
+                return genererNiveau(controleur);
             }    
         }
         catch(FileNotFoundException e){
@@ -95,7 +113,7 @@ public class Niveau {
 
     @objid ("24307792-2ad2-4dea-ad30-65b97e4e6645")
     public void niveauSup() {
-        this.niveau += 1;
+        this.niveau++;
     }
 
 }
