@@ -71,6 +71,11 @@ public class Niveau {
 		                        nbDestinations++;
 		                        break;
 		                    case "J":
+		                    	if (personnage != null) {
+		                    		System.out.println("le fichier " + "niveau_" + niveau + ".csv" + " ne correspond pas à un niveau car il y a plusieurs personnages");
+		                        	niveau++;
+		                        	return genererNiveau(controleur);
+		                    	}
 		                        personnage = new Personnage();
 		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, personnage, entrepot);
 		                        personnage.setTuille(tuilleTemporaire);
