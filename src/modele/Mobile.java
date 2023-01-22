@@ -20,6 +20,9 @@ public abstract class Mobile {
     @objid ("12c85eae-bfc3-45d1-bb8e-5e2edf166f55")
     public boolean deplacement(Direction direction) {
         Tuille tuilleVoisine = tuille.tuilleVoisine(direction);
+        if (tuilleVoisine == null) {
+        	return false;
+        }
         if (tuilleVoisine.demandeDeplacement(direction, this)) {
             changementTuille(tuilleVoisine);
             return true;

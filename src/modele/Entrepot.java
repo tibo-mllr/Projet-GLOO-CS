@@ -28,6 +28,9 @@ public class Entrepot {
     @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
     public Tuille getTuille(Position position) {
         int index = positions.indexOf(position);
+        if (index == -1) {
+            return null;
+        } 
         return tuilles.get(index);
     }
 
