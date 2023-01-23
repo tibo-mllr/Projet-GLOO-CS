@@ -5,7 +5,7 @@ import controle.ContenuCase;
 import controle.Direction;
 
 @objid ("7ac4f54a-f5bd-4501-9651-9ca090bcdcda")
-public class Tuille {
+public class Tuile {
     @objid ("581815d8-5687-4895-81b1-85be47ebe507")
     private Fixe fixe;
 
@@ -16,7 +16,7 @@ public class Tuille {
     private Entrepot entrepot;
     
     @objid ("37c0c66e-be7f-48ed-9fa3-b804bfc74de2")
-    public Tuille(Fixe fixe, Mobile mobile, Entrepot entrepot) {
+    public Tuile(Fixe fixe, Mobile mobile, Entrepot entrepot) {
         this.fixe = fixe;
         this.mobile = mobile;
         this.entrepot = entrepot;
@@ -24,8 +24,8 @@ public class Tuille {
     
     
     @objid ("b1346dbd-5e6c-4016-ad68-c95b28d8bc10")
-    public Tuille tuilleVoisine(Direction direction) {
-        return entrepot.tuilleVoisine(this, direction);
+    public Tuile tuileVoisine(Direction direction) {
+        return entrepot.tuileVoisine(this, direction);
     }
 
     @objid ("dcdfe19e-4e20-4f06-bf8f-af83a391996c")

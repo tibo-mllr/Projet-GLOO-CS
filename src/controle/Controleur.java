@@ -5,7 +5,7 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import modele.Entrepot;
 import modele.Niveau;
 import modele.Personnage;
-import modele.Tuille;
+import modele.Tuile;
 
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
 public class Controleur implements IControleur {
@@ -16,7 +16,7 @@ public class Controleur implements IControleur {
     private Entrepot entrepot;
 
     @objid ("e1f8c039-9d97-4dfd-a5d2-188c55f15ac0")
-    private List<Tuille> objectifs;
+    private List<Tuile> objectifs;
 
     @objid ("0f46d428-5978-45dd-a09c-55f6c9e94711")
     private Personnage personnage;
@@ -33,7 +33,7 @@ public class Controleur implements IControleur {
     }
 
     @objid ("1182a2c5-0119-4cfe-91dc-854a14255647")
-    public void setAttributes(Entrepot entrepot, Personnage personnage, List<Tuille> objectifs) {
+    public void setAttributes(Entrepot entrepot, Personnage personnage, List<Tuile> objectifs) {
         this.entrepot = entrepot;
         this.personnage = personnage;
         this.objectifs = objectifs;
@@ -41,7 +41,7 @@ public class Controleur implements IControleur {
 
     @objid ("2fbd4a32-95d8-4d1f-bb4c-efa325cb2af3")
     public boolean jeuTermine() {
-        for (Tuille destination: objectifs) {
+        for (Tuile destination: objectifs) {
             if (!destination.occupee()){
                 return false;
             }

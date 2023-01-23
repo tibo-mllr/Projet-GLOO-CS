@@ -15,29 +15,29 @@ public class Entrepot {
     private int nbLignes = 0;
 
     @objid ("64fad707-e4ac-48c0-803a-a1b57f236c87")
-    private List<Tuille> tuilles = new ArrayList<Tuille>();
+    private List<Tuile> tuiles = new ArrayList<Tuile>();
 
     @objid ("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
     
     @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
-    public Position getPosition(Tuille tuille) {
-        return positions.get(tuilles.indexOf(tuille));
+    public Position getPosition(Tuile tuile) {
+        return positions.get(tuiles.indexOf(tuile));
     }
     
     @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
-    public Tuille getTuille(Position position) {
+    public Tuile gettuile(Position position) {
         int index = positions.indexOf(position);
         if (index == -1) {
             return null;
         } 
-        return tuilles.get(index);
+        return tuiles.get(index);
     }
 
     @objid ("3cdd3fc6-976b-4555-88d2-7e083d7758d1")
-    public void addElement(int indexLigne, int indexColonne, Tuille tuille) {
+    public void addElement(int indexLigne, int indexColonne, Tuile tuile) {
         positions.add(new Position(indexLigne, indexColonne));
-        tuilles.add(tuille);
+        tuiles.add(tuile);
         if (indexLigne >= nbLignes) {
         	nbLignes = indexLigne + 1;
         }
@@ -64,13 +64,13 @@ public class Entrepot {
         if (index == -1) {
             return null;
         }
-        return tuilles.get(index).getContenu();
+        return tuiles.get(index).getContenu();
     }
 
     @objid ("cc666222-6b8f-43d8-85de-86ff926cf61b")
-    public Tuille tuilleVoisine(Tuille tuille, Direction direction) {
-        Position positionVoisine = positions.get(tuilles.indexOf(tuille)).positionVoisine(direction);
-        return getTuille(positionVoisine);
+    public Tuile tuileVoisine(Tuile tuile, Direction direction) {
+        Position positionVoisine = positions.get(tuiles.indexOf(tuile)).positionVoisine(direction);
+        return gettuile(positionVoisine);
     }
 
 }

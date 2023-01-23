@@ -22,10 +22,10 @@ public class Niveau {
     public boolean genererNiveau(Controleur controleur) {
         String[] line;
         Entrepot entrepot= new Entrepot();
-        Tuille tuilleTemporaire;
+        Tuile tuileTemporaire;
         Mobile mobileTemporaire;
         Personnage personnage = null;
-        List<Tuille> objectifs = new ArrayList<Tuille>();
+        List<Tuile> objectifs = new ArrayList<Tuile>();
         int nbCaisses = 0;
         int nbDestinations = 0;
         
@@ -41,33 +41,33 @@ public class Niveau {
                     for (int j = 0; j < line.length; j++) {
                     	switch (line[j]) {
 		                    case "V":
-		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, null, entrepot);
-		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        tuileTemporaire = new Tuile(Fixe.NORMAL, null, entrepot);
+		                        entrepot.addElement(i, j, tuileTemporaire);
 		                        break;
 		                    case "M":
-		                        tuilleTemporaire = new Tuille(Fixe.MUR, null, entrepot);
-		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        tuileTemporaire = new Tuile(Fixe.MUR, null, entrepot);
+		                        entrepot.addElement(i, j, tuileTemporaire);
 		                        break;
 		                    case "C":
 		                        mobileTemporaire = new Caisse();
-		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, mobileTemporaire, entrepot);
-		                        mobileTemporaire.setTuille(tuilleTemporaire);
-		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        tuileTemporaire = new Tuile(Fixe.NORMAL, mobileTemporaire, entrepot);
+		                        mobileTemporaire.settuile(tuileTemporaire);
+		                        entrepot.addElement(i, j, tuileTemporaire);
 		                        nbCaisses++;
 		                        break;
 		                    case "R":
 		                        mobileTemporaire = new Caisse();
-		                        tuilleTemporaire = new Tuille(Fixe.DESTINATION, mobileTemporaire, entrepot);
-		                        mobileTemporaire.setTuille(tuilleTemporaire);
-		                        objectifs.add(tuilleTemporaire);
-		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        tuileTemporaire = new Tuile(Fixe.DESTINATION, mobileTemporaire, entrepot);
+		                        mobileTemporaire.settuile(tuileTemporaire);
+		                        objectifs.add(tuileTemporaire);
+		                        entrepot.addElement(i, j, tuileTemporaire);
 		                        nbCaisses++;
 		                        nbDestinations++;
 		                        break;
 		                    case "D":
-		                        tuilleTemporaire = new Tuille(Fixe.DESTINATION, null, entrepot);
-		                        objectifs.add(tuilleTemporaire);
-		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        tuileTemporaire = new Tuile(Fixe.DESTINATION, null, entrepot);
+		                        objectifs.add(tuileTemporaire);
+		                        entrepot.addElement(i, j, tuileTemporaire);
 		                        nbDestinations++;
 		                        break;
 		                    case "J":
@@ -77,9 +77,9 @@ public class Niveau {
 		                        	return genererNiveau(controleur);
 		                    	}
 		                        personnage = new Personnage();
-		                        tuilleTemporaire = new Tuille(Fixe.NORMAL, personnage, entrepot);
-		                        personnage.setTuille(tuilleTemporaire);
-		                        entrepot.addElement(i, j, tuilleTemporaire);
+		                        tuileTemporaire = new Tuile(Fixe.NORMAL, personnage, entrepot);
+		                        personnage.settuile(tuileTemporaire);
+		                        entrepot.addElement(i, j, tuileTemporaire);
 		                        break;
 		                    default:
 		                        break;                
