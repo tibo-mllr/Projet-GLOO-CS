@@ -3,6 +3,15 @@ package modele;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import controle.Direction;
 
+/**
+ * Elements du jeu Sokoban pouvant se déplacer
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
+
 @objid ("5d9ffd25-495a-4f66-8fe3-f2b3fea01b50")
 public abstract class Mobile {
     @objid ("842309ee-a6a1-4ee0-af9b-17e887d7c1cc")
@@ -21,7 +30,7 @@ public abstract class Mobile {
     public boolean deplacement(Direction direction) {
         Tuile tuileVoisine = tuile.tuileVoisine(direction);
         if (tuileVoisine == null) {
-        	return false;
+            return false;
         }
         if (tuileVoisine.demandeDeplacement(direction, this)) {
             changementtuile(tuileVoisine);
@@ -34,8 +43,8 @@ public abstract class Mobile {
 
     @objid ("9e3fdfab-5ec7-40fa-b7d0-ba52deabc422")
     public void changementtuile(Tuile nouvelletuile) {
-        tuile.oubli();
-        tuile = nouvelletuile;
+        tuile.oubli(); // dit à la tuile qui contient l'objet qu'il se déplace
+        tuile = nouvelletuile; // change la tuile dans laquelle est l'objet
     }
 
     @objid ("59ded501-42ac-4ace-adf0-dce1b5c374ba")

@@ -7,6 +7,15 @@ import modele.Niveau;
 import modele.Personnage;
 import modele.Tuile;
 
+/**
+ * Controleur pour le jeu Sokoban
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
+
 @objid ("7c4c74ff-0f6e-4444-8be5-a47a0956bfae")
 public class Controleur implements IControleur {
     @objid ("104b3a29-b258-4094-896f-a9752ca6e02c")
@@ -51,7 +60,7 @@ public class Controleur implements IControleur {
     }
 
     @objid ("98ff0bba-65d2-44a3-b158-cd62c2370b32")
-    public boolean recommencer() {
+    public boolean generer() {
         return niveau.genererNiveau(this);
     }
 

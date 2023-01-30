@@ -3,6 +3,15 @@ package modele;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import controle.Direction;
 
+/**
+ * Représentation des positions dans l'entrepot par ligne et colonne
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
+
 @objid ("10307ae9-bc29-4efa-ad40-e8723da241ec")
 public class Position {
     @objid ("3ad9ee87-8016-4379-8be5-1bac35bc1a8b")

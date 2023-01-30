@@ -11,13 +11,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controle.ContenuCase;
-import controle.Controleur;
+import controle.IControleur;
 
 /**
  * Panneau de l'IHM pour le jeu Sokoban
  * 
  * @author Dominique Marcadet, Thibault Muller, Raphaël Mahaut
- * @version 2.0
+ * @version 1.1
  *
  */
 
@@ -28,10 +28,10 @@ public class PaneauSokoban extends JPanel {
 
     private static EnumMap<ContenuCase, Image> images;
 
-    private Controleur controleur;
+    private IControleur controleur;
 
-    public PaneauSokoban(Controleur controleur) {
-        this.controleur = controleur;
+    public PaneauSokoban(IControleur controleur2) {
+        this.controleur = controleur2;
         try {
             images = new EnumMap<ContenuCase, Image>(
                     Map.of(
@@ -56,8 +56,8 @@ public class PaneauSokoban extends JPanel {
         int nbLignes = controleur.getNbLignes();
         int nbColonnes = controleur.getNbColonnes();
         
-        int decalageLat = (FenetreSokoban.LARGEUR_FENETRE - nbColonnes*TAILLE_IMAGE)/2 - 8; 
-        int decalageHor = (FenetreSokoban.HAUTEUR_FENETRE - nbLignes*TAILLE_IMAGE)/2 - 8;
+        int decalageLat = (FenetreSokoban.LARGEUR_FENETRE - nbColonnes*TAILLE_IMAGE)/2 - 8; // permet de centrer l'entrepot horizontalement
+        int decalageHor = (FenetreSokoban.HAUTEUR_FENETRE - nbLignes*TAILLE_IMAGE)/2 - 8; // permet de centrer l'entrepot verticalement
         
         for (int l = 0; l < nbLignes; ++l) {
             for (int c = 0; c < nbColonnes; ++c) {

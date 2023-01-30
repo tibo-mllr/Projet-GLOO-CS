@@ -6,6 +6,15 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import controle.ContenuCase;
 import controle.Direction;
 
+/**
+ * Entrepot contenant les cases du jeu et leurs positions
+ * 
+ * @author Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
+
 @objid ("26e154aa-b4a1-4890-8686-eb4052e6afdd")
 public class Entrepot {
     @objid ("e2e9c129-b35c-41e4-ae95-9633894c734a")
@@ -19,18 +28,13 @@ public class Entrepot {
 
     @objid ("1132815e-53f9-4a82-8567-322fff810193")
     private List<Position> positions = new ArrayList<Position>();
-    
-    @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
-    public Position getPosition(Tuile tuile) {
-        return positions.get(tuiles.indexOf(tuile));
-    }
-    
+
     @objid ("8dc30092-0480-4420-b6c1-ecea3a1d4e43")
     public Tuile gettuile(Position position) {
         int index = positions.indexOf(position);
         if (index == -1) {
             return null;
-        } 
+        }
         return tuiles.get(index);
     }
 
@@ -39,14 +43,17 @@ public class Entrepot {
         positions.add(new Position(indexLigne, indexColonne));
         tuiles.add(tuile);
         if (indexLigne >= nbLignes) {
-        	nbLignes = indexLigne + 1;
+            nbLignes = indexLigne + 1;
         }
         if (indexColonne >= nbColonnes) {
-        	nbColonnes = indexColonne + 1;
+            nbColonnes = indexColonne + 1;
         }
     }
 
-    
+    @objid ("ed62054f-4e1c-4e65-af96-0a28af8b4283")
+    public Position getPosition(Tuile tuile) {
+        return positions.get(tuiles.indexOf(tuile));
+    }
 
     @objid ("31a8e51c-68b2-42bd-9aa3-7337cbfa7bd8")
     public int getNbColonnes() {

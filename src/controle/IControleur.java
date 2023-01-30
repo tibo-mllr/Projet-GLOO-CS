@@ -2,6 +2,14 @@ package controle;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+/**
+ * Interface du controleur permettant l'inversion des dépendances
+ * 
+ * @author Dominique Marcadet, Thibault Muller, Raphaël Mahaut
+ * @version 1.0
+ *
+ */
+
 @objid ("f04ba7b3-4d1d-42d6-8c84-bf0e4163c85b")
 public interface IControleur {
     @objid ("4d31bcfa-f260-4f3b-b02f-bac372dd1c75")
@@ -18,5 +26,8 @@ public interface IControleur {
 
     @objid ("cc650304-f2eb-4fa4-b7fb-3296f0d8eb2d")
     ContenuCase getContenu(int ligne, int colonne);
+
+    @objid ("69cdbc1d-715d-418e-bd66-bcd8dcc50434")
+    boolean generer();
 
 }
